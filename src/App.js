@@ -1,52 +1,27 @@
 
 import './App.css';
-import User from './components/user';
+import { useState } from 'react';
 function App() {
-//   const age = 27 ;
-//   const isGreeen = false
-//   const users = [
-//                  {person:"ange" , age:21 , sex:"female"},
-//                   {person:"me" , age:22 , sex:"male"},
-//                   {person:"lisa" , age:23 , sex:"female"},
+const [count , setCount] = useState(0)
 
-// ]
-  
-//   return (
-   
-//     <div className="App">
-    
-    
-//       {/* <div className='App'>
-//         {age >= 43 ? <h1 >OVER AGE</h1> : <h1> UNDER AGE</h1>}
-//         <h2 style={{ color:isGreeen ? "green" : "blue" }}>THIS HAS A COLOR</h2>
+const increase = () =>{
+setCount(count+1)
+}
 
-        
-        
-//       </div> */}
-//      {
-//       users.map((user,key)=>{
-//         return <User person = {user.person} age = {user.age} sex = {user.sex}  />
-//       })
-//      }
-    
+const decrease = ( ) =>{
+  setCount(count-1)
+}
 
-//     </div>
-//   );
-
-const planets = [
-  {name: "Mars" , isGasPlanet: false },
-  {name: "Earth" , isGasPlanet: false },
-  {name: "Jupiter" , isGasPlanet: true },
-  {name: "Venus" , isGasPlanet: false },
-  {name: "Neptune" , isGasPlanet: true },
-  {name: "Uranus" , isGasPlanet: true },
-]
+const setToZero = () =>{
+  setCount(0)
+}
 
 return(
  <div  className="App">
- { planets.map((planet,key)=>{
-if(planet.isGasPlanet)return(<h1 key={key}>{planet.name}</h1>)
- })}
+ <button  style = {{ backgroundColor : "green"}} onClick={increase}>Increase</button> 
+ <button  style = {{ backgroundColor : "red"}} onClick={decrease}>decrease</button>
+ <button  style = {{ backgroundColor : "yellow"}} onClick={setToZero}>set to zero</button>
+{count}
  </div>
 )
 }
