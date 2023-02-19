@@ -1,69 +1,57 @@
 
 import './App.css';
+import User from './components/user';
 function App() {
-  return (
-    <div className="App">
-      <User 
-      fname="Lucie" 
-      lname="fifi" 
-      age={22} 
-      email="lucie@gmail.com"
-      />
-      <User 
-      fname="mummy" 
-      lname="daddy" 
-      age={145} 
-      email="daddymummy@gmail.com"
-      />
-      <User 
-      fname="steve" 
-      lname="dederot" 
-      age={22} 
-      email="steve@gmail.com"
-      />
-      <Job 
-      salary={9000} 
-      position="manager" 
-      company="amazon"
-      />
-      <Job 
-      salary={1000000} 
-      position="software engineer" 
-      company="google"
-      />
-      <Job 
-      salary={2000000} 
-      position="software engineer" 
-      company="facebook"
-      />
+//   const age = 27 ;
+//   const isGreeen = false
+//   const users = [
+//                  {person:"ange" , age:21 , sex:"female"},
+//                   {person:"me" , age:22 , sex:"male"},
+//                   {person:"lisa" , age:23 , sex:"female"},
 
-    </div>
-  );
+// ]
+  
+//   return (
+   
+//     <div className="App">
+    
+    
+//       {/* <div className='App'>
+//         {age >= 43 ? <h1 >OVER AGE</h1> : <h1> UNDER AGE</h1>}
+//         <h2 style={{ color:isGreeen ? "green" : "blue" }}>THIS HAS A COLOR</h2>
+
+        
+        
+//       </div> */}
+//      {
+//       users.map((user,key)=>{
+//         return <User person = {user.person} age = {user.age} sex = {user.sex}  />
+//       })
+//      }
+    
+
+//     </div>
+//   );
+
+const planets = [
+  {name: "Mars" , isGasPlanet: false },
+  {name: "Earth" , isGasPlanet: false },
+  {name: "Jupiter" , isGasPlanet: true },
+  {name: "Venus" , isGasPlanet: false },
+  {name: "Neptune" , isGasPlanet: true },
+  {name: "Uranus" , isGasPlanet: true },
+]
+
+return(
+ <div  className="App">
+ { planets.map((planet,key)=>{
+if(planet.isGasPlanet)return(<h1 key={key}>{planet.name}</h1>)
+ })}
+ </div>
+)
 }
 
-const User = (props) =>{
-  return (
-    <div>
-      <h1>{props.lname}</h1>
-      <h1>{props.fname}</h1>
-      <h1>{props.age}</h1>
-      <h1>{props.email}</h1>
-    </div>
 
 
-     
-  )
-}
-
-const Job = (props)=>{
-  return(
-    <div>
-      <h3>{props.salary}</h3>
-      <h3>{props.position}</h3>
-      <h3>{props.company}</h3>
-
-    </div>
-  )
-}
 
 export default App;
