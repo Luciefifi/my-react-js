@@ -1,82 +1,31 @@
 
                 import './App.css';
-                import { useState } from 'react';
-                import Task from './components/Task';
+              
+     
                
                 function App() {
-                var [todoList , setTodoList] = useState([])
-                const [newTask , setNewTask] = useState("")
-
-                const handleChange = (event) =>{
-                  setNewTask(event.target.value)
-                  
-                }
-
-                const addTask = () =>{
-                const task = {
-                    id:todoList.length === 0 ? 1 : todoList[todoList.length - 1].id + 1,
-                    taskName : newTask,
-                    completed : false
-                  }
-                  setTodoList( [...todoList , task])
-                }
-
-                const deleteTask =  (id) => {
-                const newTodoList = todoList.filter((task) =>{
-                  if(task.id === id)
-                  {
-                    return false
-                  }
-                  else{
-                    return true
-                  }
-
-                })
-
-                setTodoList(newTodoList)
-                }
-                const completeTask = (id) =>{
-                  setTodoList(
-                    todoList.map((task) =>{
-                      if(task.id === id)
-                      {
-                        return {...task, completed: true}
-                      }
-                      else{
-                        return task
-                      }
-                    })
-                  )
-
-                }
-
+               
+                  fetch("https://catfact.ninja/fact")
+                  .then((response) =>
+                    response.json()
+                    )
+                  .then((data) =>{
+                    console.log(data)
+                  })
 
 
                 return(
                 <div  className="App">
-                <div className='task'>
-                <input onChange={handleChange}/>
-                <button onClick={addTask}>Add Task</button>
-                </div>
-                <div className='List'>
-                  {
-                    todoList.map((task) =>{
-                      
-                return <Task taskName = {task.taskName} 
-                id = {task.id}
-                completed = {task.completed}
-                deleteTask = {deleteTask}
-                completeTask = {completeTask}/>
-
-                    })
-                  }
+           <button>Generate Cat Fact</button>
+           <p></p>
+                  
                 </div>
 
 
 
 
 
-                </div>
+              
                 )
                 }
 
