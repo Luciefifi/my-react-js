@@ -5,17 +5,20 @@
                 import Menu from './components/menu';
                 import Contact from './components/Contact';
                import  Navigation from './components/navigation';
-               import { useState , createContext } from 'react';
 
-                export const AppContext = createContext()
+               import { QueryClient , QueryClientProvider } from '@tanstack/react-query';
 
-     
-               
+
                 function App() {
-                  const [userName , setUserName] = useState("Lavendita")
+                  const client = new QueryClient({defaultOptions:{
+                    queries:{
+                      refetchOnWindowFocus: false
+                    }
+                  }})
+                  
                 return(
                 <div  className="App">
-                  <AppContext.Provider value={{userName , setUserName}}>
+                  <QueryClientProvider client={client}>
                   <Router>
                     <Navigation/>
                   <Routes>
@@ -24,7 +27,8 @@
                     <Route path="/contact" element={<Contact />} />
                   </Routes>
                  </Router>
-                 </AppContext.Provider>
+                 </QueryClientProvider>
+                
           
 
                   
@@ -36,6 +40,7 @@
 
               
                 )
+                
                 }
 
 
