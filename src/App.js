@@ -1,7 +1,9 @@
 
-                import Form from './components/Form';
+                // import Form from './components/Form';
                   import './App.css';
-                  import './Form.css';
+                  // import './Form.css';
+                  import { useState } from 'react';
+                  
               //   import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
               //   import Home from './components/home';
               //   import Menu from './components/menu';
@@ -12,6 +14,7 @@
 
 
                 function App() {
+                  const [isVisible , setIsVisible] = useState(false)
                   // const client = new QueryClient({defaultOptions:{
                   //   queries:{
                   //     refetchOnWindowFocus: false
@@ -20,6 +23,11 @@
                   
                 return(
                 <div  className="App">
+                  <button onClick={()=> setIsVisible((prev) => !prev)}>
+                    {isVisible ? "Hide" : "Show"}
+                    
+                  </button>
+                  {isVisible && <h1>Hidden Text</h1>}
                   {/* <QueryClientProvider client={client}>
                   <Router>
                     <Navigation/>
@@ -30,7 +38,7 @@
                   </Routes>
                  </Router>
                  </QueryClientProvider> */}
-                 <Form/>
+                 {/* <Form/> */}
                 
           
 
