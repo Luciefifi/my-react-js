@@ -1,8 +1,9 @@
 
                 // import Form from './components/Form';
                   import './App.css';
+                  import useCount from './useCount';
                   // import './Form.css';
-                  import useToggle from './useToggle';
+                  
                   
               //   import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
               //   import Home from './components/home';
@@ -14,8 +15,7 @@
 
 
                 function App() {
-            const [isVisible , toggle] = useToggle()
-            const [isVisible2 , toggle2] = useToggle()
+           const {count , increase , decrease , reset} = useCount()
                   // const client = new QueryClient({defaultOptions:{
                   //   queries:{
                   //     refetchOnWindowFocus: false
@@ -24,10 +24,10 @@
                   
                 return(
                 <div  className="App">
-                  <button onClick={toggle}>{isVisible ? "Hide" : "Show"}</button>
-                  {isVisible && <h1>Hidden Text</h1>}
-                  <button onClick={toggle2}>{isVisible2 ? "Hide" : "Show"}</button>
-                  {isVisible2 && <h1>Hidden Text</h1>}
+                  {count}
+                  <button onClick={increase}>increase</button>
+                  <button onClick={decrease}>decrease</button>
+                  <button onClick={reset}>reset</button>
                   {/* <QueryClientProvider client={client}>
                   <Router>
                     <Navigation/>
