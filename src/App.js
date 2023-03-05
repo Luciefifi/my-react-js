@@ -2,7 +2,7 @@
                 // import Form from './components/Form';
                   import './App.css';
                   // import './Form.css';
-                  import { useState } from 'react';
+                  import useToggle from './useToggle';
                   
               //   import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
               //   import Home from './components/home';
@@ -14,7 +14,8 @@
 
 
                 function App() {
-                  const [isVisible , setIsVisible] = useState(false)
+            const [isVisible , toggle] = useToggle()
+            const [isVisible2 , toggle2] = useToggle()
                   // const client = new QueryClient({defaultOptions:{
                   //   queries:{
                   //     refetchOnWindowFocus: false
@@ -23,11 +24,10 @@
                   
                 return(
                 <div  className="App">
-                  <button onClick={()=> setIsVisible((prev) => !prev)}>
-                    {isVisible ? "Hide" : "Show"}
-                    
-                  </button>
+                  <button onClick={toggle}>{isVisible ? "Hide" : "Show"}</button>
                   {isVisible && <h1>Hidden Text</h1>}
+                  <button onClick={toggle2}>{isVisible2 ? "Hide" : "Show"}</button>
+                  {isVisible2 && <h1>Hidden Text</h1>}
                   {/* <QueryClientProvider client={client}>
                   <Router>
                     <Navigation/>
